@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/shuimo">
+        <TextView
+            android:id="@+id/reversititle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="黑白棋"
+            android:textColor="@color/BLACK"
+            android:ems="1"
+            android:textSize="50dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="50dp"/>
+
+        <Button
+            android:layout_gravity="right"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="120dp"
+            android:text="单人游戏"
+            android:textSize="23.5dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_singlegame"
+            android:layout_width="wrap_content"
+            android:background="@drawable/shape" />
+        <Button
+            android:layout_gravity="right"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="12dp"
+            android:text="双人对战"
+            android:textSize="23.5dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_doublegame"
+            android:layout_width="wrap_content"
+            android:background="@drawable/shape" />
+        <Button
+            android:layout_gravity="right"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="12dp"
+            android:text="游戏设置"
+            android:textSize="23.5dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_gamesettings"
+            android:layout_width="wrap_content"
+            android:background="@drawable/shape" />
+        <Button
+            android:layout_gravity="right"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="12dp"
+            android:text="游戏规则"
+            android:textSize="23.5dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_gamerule"
+            android:layout_width="wrap_content"
+            android:background="@drawable/shape" />
+
+</LinearLayout>

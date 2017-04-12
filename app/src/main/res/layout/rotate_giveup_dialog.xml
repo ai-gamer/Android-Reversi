@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.sunshuo.reversi.widget.RotateLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="#ffffff">
+    <TextView
+        android:id="@+id/msg"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/rect"
+        android:text="您确定要认输吗？"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/no2"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rect"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:text="否"
+            android:textColor="@color/WHITE" />
+        <Button
+            android:id="@+id/yes2"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rect"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:text="是"
+            android:textColor="@color/WHITE" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/msg2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/rect"
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:gravity="center"/>
+
+</cn.sunshuo.reversi.widget.RotateLinearLayout>

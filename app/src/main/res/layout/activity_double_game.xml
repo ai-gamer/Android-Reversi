@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#313131"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="108dp"
+        android:layout_marginRight="108dp"
+        android:layout_marginTop="30dp">
+ <!--       <cn.sunshuo.reversi.widget.RotateButton
+            android:id="@+id/double_undo_white"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="80dp"
+            android:background="@drawable/rect"
+            android:textColor="@android:color/black"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:text="悔棋"/>  -->
+        <cn.sunshuo.reversi.widget.RotateButton
+            android:id="@+id/double_giveup_white"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/rect"
+            android:textColor="@android:color/black"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:text="认输"/>
+    </LinearLayout>
+
+    <cn.sunshuo.reversi.game.ReversiView
+        android:id="@+id/double_reversiView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="108dp"
+        android:layout_marginRight="108dp"
+        android:layout_marginBottom="108dp"
+        android:gravity="bottom">
+    <!--    <Button
+            android:id="@+id/double_undo_black"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="80dp"
+            android:background="@drawable/rect"
+            android:textColor="@android:color/black"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:text="悔棋"/> -->
+        <Button
+            android:id="@+id/double_giveup_black"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/rect"
+            android:textColor="@android:color/black"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:text="认输"/>
+    </LinearLayout>
+
+</LinearLayout>
