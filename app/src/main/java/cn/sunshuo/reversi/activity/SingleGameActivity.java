@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +34,7 @@ import cn.sunshuo.reversi.game.Algorithm;
 import cn.sunshuo.reversi.game.Constant;
 import cn.sunshuo.reversi.game.ReversiView;
 import cn.sunshuo.reversi.game.Rule;
+import cn.sunshuo.reversi.util.Setting;
 import cn.sunshuo.reversi.widget.MessageDialog;
 import cn.sunshuo.reversi.widget.StartNewGameDialog;
 import cn.sunshuo.reversi.widget.SetNewGameDialog;
@@ -62,8 +66,8 @@ public class SingleGameActivity extends Activity {
     private byte aiColor;
     private int difficulty;
 
-
-
+    private MediaPlayer mediaPlayer;
+    
     private static final int M = 8;
     private static final int depth[] = new int[] { 0, 1, 2, 3, 7, 3, 5, 2, 4 };
 
@@ -83,6 +87,30 @@ public class SingleGameActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_single_game);
+        
+        mediaPlayer = new MediaPlayer();
+    	try {
+    		AssetFileDescriptor assetFileDescriptor=getAssets().openFd("music/down.mp3");
+    		if(assetFileDescriptor!=null){
+    			mediaPlayer.setDataSource(assetFileDescriptor.getFileDescriptor(),
+    				assetFileDescriptor.getStartOffset(), assetFileDescriptor.getLength() );
+    			mediaPlayer.setLooping(false);
+    			mediaPlayer.prepare();
+    		}
+    		else {
+    			mediaPlayer = null;
+    		}
+		} catch (IllegalArgumentException e) {
+			mediaPlayer = null;
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			mediaPlayer = null;
+			e.printStackTrace();
+		} catch (IOException e) {
+			mediaPlayer = null;
+			e.printStackTrace();
+		}
+        
         reversiView = (ReversiView) findViewById(R.id.reversiView);
         playerLayout = (LinearLayout) findViewById(R.id.player);
         aiLayout = (LinearLayout) findViewById(R.id.ai);
@@ -143,6 +171,7 @@ public class SingleGameActivity extends Activity {
                             /**
                              * 玩家走步
                              */
+                            palySound();
                             Move move = new Move(row, col);
                             List<Move> moves = Rule.move(chessBoard, move, playerColor);
                             reversiView.move(chessBoard, moves, move, playerColor);
@@ -322,6 +351,7 @@ public class SingleGameActivity extends Activity {
             }
             int legalMoves = Rule.getLegalMoves(chessBoard, thinkingColor).size();
             if (legalMoves > 0) {
+                palySound();
                 Move move = Algorithm.getGoodMove(chessBoard, depth[difficulty], thinkingColor, difficulty);
                 List<Move> moves = Rule.move(chessBoard, move, thinkingColor);
                 reversiView.move(chessBoard, moves, move, thinkingColor);
@@ -428,6 +458,22 @@ public class SingleGameActivity extends Activity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
+    
+    public void palySound()
+    {
+    	if(Setting.getInstance().isMusicEnabled()){
+    		mediaPlayer.seekTo(200);
+    		mediaPlayer.start();
+    	}
+    }
+    
+    @Override
+    protected void onDestroy() {
+    	if(mediaPlayer!=null){
+    		mediaPlayer.pause();
+    		mediaPlayer.stop();
+    		mediaPlayer.release();
+    	}
+    	super.onDestroy();
+    }
 }

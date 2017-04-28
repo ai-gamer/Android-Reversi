@@ -24,6 +24,7 @@ import java.util.ListIterator;
 import cn.sunshuo.reversi.R;
 import cn.sunshuo.reversi.bean.Move;
 import cn.sunshuo.reversi.bean.Undo;
+import cn.sunshuo.reversi.util.Setting;
 import cn.sunshuo.reversi.util.Util;
 
 /**
@@ -92,7 +93,7 @@ public class ReversiView extends SurfaceView implements SurfaceHolder.Callback {
         chessBoardBottom=chessBoardTop+M * a;
         images =new Bitmap[22];
         loadChesses(context);
-        background=loadBitmap(bgLength,bgLength,context.getResources().getDrawable(R.drawable.wood));
+        background=loadBitmap(bgLength,bgLength,context.getResources().getDrawable( Setting.getInstance().getBackgroundResId() ));
         initialChessBoard();
 
     }
@@ -136,8 +137,8 @@ public class ReversiView extends SurfaceView implements SurfaceHolder.Callback {
     }
     @Override
     protected  void onMeasure(int widthMeasureSpec,int heightMeasureSpec){
-        widthMeasureSpec= View.MeasureSpec.makeMeasureSpec((int)bgLength, MeasureSpec.EXACTLY);
-        heightMeasureSpec=View.MeasureSpec.makeMeasureSpec((int)bgLength,MeasureSpec.EXACTLY);
+        widthMeasureSpec= MeasureSpec.makeMeasureSpec((int)bgLength, MeasureSpec.EXACTLY);
+        heightMeasureSpec= MeasureSpec.makeMeasureSpec((int)bgLength,MeasureSpec.EXACTLY);
         setMeasuredDimension(widthMeasureSpec,heightMeasureSpec);
         super.onMeasure(widthMeasureSpec,heightMeasureSpec);
     }
